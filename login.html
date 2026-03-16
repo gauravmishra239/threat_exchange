@@ -10,6 +10,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
+  --page-bg:#000;
   --red:#c8102e;--red-dim:rgba(200,16,46,.15);--red-glow:rgba(200,16,46,.4);
   --white:rgba(255,255,255,.93);--w60:rgba(255,255,255,.6);--w30:rgba(255,255,255,.3);
   --surface:rgba(255,255,255,.04);--surface-h:rgba(255,255,255,.07);
@@ -17,7 +18,7 @@
   --t2:rgba(255,255,255,.55);--t3:rgba(255,255,255,.3);
   --r:6px;--rl:12px;
 }
-html,body{height:100%;background:#000;font-family:"Outfit",sans-serif;color:var(--white);overflow:hidden;}
+html,body{height:100%;background:var(--page-bg,#000);font-family:"Outfit",sans-serif;color:var(--white);overflow:hidden;}
 .bg{position:fixed;inset:0;z-index:0;overflow:hidden;}
 .bg-grid{position:absolute;inset:-50%;width:200%;height:200%;background-image:linear-gradient(rgba(200,16,46,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,16,46,.04) 1px,transparent 1px);background-size:60px 60px;transform:rotate(-8deg);animation:gridDrift 30s linear infinite;}
 @keyframes gridDrift{from{transform:rotate(-8deg) translate(0,0);}to{transform:rotate(-8deg) translate(60px,60px);}}
@@ -30,7 +31,7 @@ html,body{height:100%;background:#000;font-family:"Outfit",sans-serif;color:var(
 .shell{position:relative;z-index:1;display:flex;height:100vh;width:100vw;}
 .left-panel{flex:1;display:flex;flex-direction:column;justify-content:center;padding:64px 72px;position:relative;}
 .logo-wrap{margin-bottom:64px;animation:fadeUp .8s ease both;}
-.logo-img{height:32px;width:auto;object-fit:contain;object-position:left center;filter:brightness(1.05);}
+.logo-img{height:32px;width:auto;object-fit:contain;object-position:left center;}
 .hero-label{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:18px;display:flex;align-items:center;gap:10px;animation:fadeUp .8s .1s ease both;}
 .hero-label::before{content:"";width:24px;height:1px;background:var(--red);display:inline-block;}
 .hero-title{font-family:"Syne",sans-serif;font-size:38px;font-weight:800;line-height:1.15;letter-spacing:-.5px;color:#fff;margin-bottom:22px;animation:fadeUp .8s .2s ease both;}
@@ -87,6 +88,44 @@ html,body{height:100%;background:#000;font-family:"Outfit",sans-serif;color:var(
 .sw-lbl{font-size:11px;margin-top:3px;}
 .theme-btn{position:fixed;top:14px;right:14px;z-index:200;width:34px;height:34px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .15s;}
 .theme-btn:hover{background:var(--surface-h);color:#fff;}
+/* ── LIGHT THEME OVERRIDES ── */
+[data-theme="light"]{--surface:rgba(0,0,0,.06);--surface-h:rgba(0,0,0,.1);--border:rgba(0,0,0,.12);--border-f:rgba(200,16,46,.6);--white:rgba(0,0,0,.88);--t2:rgba(0,0,0,.55);--t3:rgba(0,0,0,.35);}
+[data-theme="light"]{--page-bg:#f0f0f2;}[data-theme="light"] body{background:#f0f0f2;}[data-theme="light"] .bg{background:#f0f0f2;}[data-theme="light"] html{background:#f0f0f2;}
+[data-theme="light"] .bg-grid{background-image:linear-gradient(rgba(200,16,46,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,16,46,.05) 1px,transparent 1px);}
+[data-theme="light"] .orb-1{background:radial-gradient(circle,rgba(200,16,46,.08) 0%,transparent 65%);}
+[data-theme="light"] .left-panel{background:#f0f0f2;}
+[data-theme="light"] .hero-title{color:#0a0a0a;}
+[data-theme="light"] .logo-text{color:#0a0a0a;}
+[data-theme="light"] .stat-num{color:#0a0a0a;}
+[data-theme="light"] .feat-title{color:rgba(0,0,0,.85);}
+[data-theme="light"] .feat-desc{color:rgba(0,0,0,.5);}
+[data-theme="light"] .hero-desc{color:rgba(0,0,0,.5);}
+[data-theme="light"] .stat-lbl{color:rgba(0,0,0,.4);}
+[data-theme="light"] .stats-row{border-top-color:rgba(0,0,0,.1);}
+[data-theme="light"] .right-panel{background:rgba(255,255,255,.95);}
+[data-theme="light"] .right-panel::before{border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .panel-div{background:linear-gradient(to bottom,transparent 5%,rgba(200,16,46,.15) 25%,rgba(0,0,0,.07) 50%,rgba(200,16,46,.15) 75%,transparent 95%);}
+[data-theme="light"] .form-title{color:#0a0a0a;}
+[data-theme="light"] .form-sub{color:rgba(0,0,0,.5);}
+[data-theme="light"] .field-lbl{color:rgba(0,0,0,.45);}
+[data-theme="light"] .inp{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] .inp:focus{border-color:rgba(200,16,46,.6);background:rgba(200,16,46,.03);box-shadow:0 0 0 3px rgba(200,16,46,.08);}
+[data-theme="light"] .inp::placeholder{color:rgba(0,0,0,.28);}
+[data-theme="light"] .oauth-btn{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:rgba(0,0,0,.6);}
+[data-theme="light"] .oauth-btn:hover{background:rgba(0,0,0,.08);color:#000;}
+[data-theme="light"] .div-or{color:rgba(0,0,0,.3);}
+[data-theme="light"] .div-or::before,[data-theme="light"] .div-or::after{background:rgba(0,0,0,.1);}
+[data-theme="light"] .sw{color:rgba(0,0,0,.4);}
+[data-theme="light"] .sw-bar{background:rgba(0,0,0,.1);}
+[data-theme="light"] .theme-btn{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.12);color:rgba(0,0,0,.5);}
+[data-theme="light"] .theme-btn:hover{background:rgba(0,0,0,.1);color:#000;}
+[data-theme="light"] .al-err{background:rgba(200,16,46,.08);color:#a50d25;border-color:rgba(200,16,46,.25);}
+[data-theme="light"] .al-ok{background:rgba(22,163,74,.08);color:#16a34a;border-color:rgba(22,163,74,.25);}
+[data-theme="light"] .scan-line{background:linear-gradient(90deg,transparent,rgba(200,16,46,.25),transparent);}
+[data-theme="light"] .eyebrow,.eyebrow-lnk{color:var(--red);}
+[data-theme="light"] .field-lnk{color:var(--red);}
+[data-theme="light"] .sw a{color:var(--red);}
+[data-theme="light"] .sw-lbl{color:rgba(0,0,0,.4);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 @media(max-width:900px){.left-panel,.panel-div{display:none;}.right-panel{width:100%;background:transparent;}.form-logo-mobile{display:block;}html,body{overflow:auto;}}
 </style>
@@ -208,11 +247,34 @@ window.doLogin=async()=>{ha("lErr","lOk");const email=document.getElementById("l
 window.doSignup=async()=>{ha("sErr","sOk");const first=document.getElementById("sFirst").value.trim(),last=document.getElementById("sLast").value.trim(),email=document.getElementById("sEmail").value.trim(),pw=document.getElementById("sPw").value,conf=document.getElementById("sConf").value;if(!first||!last||!email||!pw){sa("sErr","All fields are required.","al-err");return;}if(pw.length<8){sa("sErr","Password must be at least 8 characters.","al-err");return;}if(pw!==conf){sa("sErr","Passwords do not match.","al-err");return;}const btn=document.getElementById("sBtn");btn.disabled=true;btn.textContent="Creating workspace…";try{const{error}=await SB.auth.signUp({email,password:pw,options:{data:{first_name:first,last_name:last,full_name:first+" "+last,role:"admin"}}});btn.disabled=false;btn.textContent="Create account & workspace";if(error){sa("sErr",error.message,"al-err");return;}sa("sOk","Account created! Check your email to verify, then sign in.","al-ok");}catch(e){btn.disabled=false;btn.textContent="Create account & workspace";sa("sErr","Connection error. Try again.","al-err");}};
 window.doForgot=async()=>{ha("fpErr","fpOk");const email=document.getElementById("fpEmail").value.trim();if(!email){sa("fpErr","Please enter your email.","al-err");return;}try{const{error}=await SB.auth.resetPasswordForEmail(email,{redirectTo:location.origin+"/reset.html"});if(error){sa("fpErr",error.message,"al-err");return;}sa("fpOk","Recovery link sent! Check your inbox.","al-ok");}catch(e){sa("fpErr","Connection error. Try again.","al-err");}};
 window.oauth=async(p)=>{
+  // Clear any previous errors
+  ha('lErr','lOk');
   try{
-    const redirectTo=location.origin+(location.pathname.includes('threat-exchange')?'/threat-exchange':'')+'/dashboard.html';
-    const{error}=await SB.auth.signInWithOAuth({provider:p,options:{redirectTo,scopes:p==='github'?'read:user user:email':''}});
-    if(error){sa('lErr',error.message,'al-err');}
-  }catch(e){sa('lErr','OAuth error: '+e.message,'al-err');}
+    // Build the correct redirect URL for any hosting environment
+    // Works for: GitHub Pages subpath, custom domain, localhost
+    const pathParts=location.pathname.split('/');
+    pathParts.pop(); // remove current filename (login.html)
+    const basePath=pathParts.join('/')+'/';
+    const redirectTo=location.origin+basePath+'dashboard.html';
+
+    const{error}=await SB.auth.signInWithOAuth({
+      provider:p,
+      options:{
+        redirectTo:redirectTo,
+        skipBrowserRedirect:false
+      }
+    });
+    if(error){
+      // Provider not enabled in Supabase
+      if(error.message.toLowerCase().includes('provider')||error.status===400){
+        sa('lErr',p.charAt(0).toUpperCase()+p.slice(1)+' sign-in is not enabled yet. Go to Supabase → Authentication → Providers and enable '+p.charAt(0).toUpperCase()+p.slice(1)+'.','al-err');
+      } else {
+        sa('lErr',error.message,'al-err');
+      }
+    }
+  }catch(e){
+    sa('lErr','Could not launch '+p+' sign-in. Check your browser allows popups for this site.','al-err');
+  }
 };
 window.checkPw=(pw)=>{const fill=document.getElementById("swFill"),lbl=document.getElementById("swLbl");if(!fill)return;let s=0;if(pw.length>=8)s++;if(pw.length>=12)s++;if(/[A-Z]/.test(pw))s++;if(/[0-9]/.test(pw))s++;if(/[^A-Za-z0-9]/.test(pw))s++;const lvl=[{w:"0%",c:"transparent",l:"Choose a strong password"},{w:"20%",c:"#ef4444",l:"Weak"},{w:"45%",c:"#f97316",l:"Fair"},{w:"70%",c:"#3b82f6",l:"Good"},{w:"100%",c:"#22c55e",l:"Strong"}];const lv=lvl[Math.min(s,4)];fill.style.width=lv.w;fill.style.background=lv.c;lbl.textContent=lv.l;lbl.style.color=lv.c;};
 </script>
